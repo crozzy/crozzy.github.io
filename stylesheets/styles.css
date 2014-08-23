@@ -41,6 +41,10 @@ a {
   text-decoration:none;
 }
 
+a:active, a:focus {
+    outline: none;
+}
+
 a small {
   font-size:11px;
   color:#777;
