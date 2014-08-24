@@ -17,14 +17,16 @@
     <script>
     $("document").ready(function() {
 
-        jQuery.fn.fadeInOut = function(show_it) {
+        jQuery.fn.flasher = function(show_it) {
+                // Flasher is infinate loop and should be if you consider 
+                // the notion of flashing!
                 if (show_it == 0) { 
                     this.animate({ opacity: show_it }, 300, function() {
-                            $(this).fadeInOut(1);
+                            $(this).flasher(1);
                     });
                 } else if (show_it == 1) {
                     this.animate({ opacity: show_it }, 300, function() {
-                            $(this).fadeInOut(0);
+                            $(this).flasher(0);
                     });
                 } else {
                     return this;
@@ -33,10 +35,12 @@
         };
 
         $("a").focus(function() {
+            // Only took me about 2 hours to find block cursor unicode character
+            // :/
             $(this).parent().append("<span class='flash'>&#x220e</span>")
             this.style.outline = null;
-            $(this).next( "span" ).show();
-            $(this).next( "span" ).fadeInOut(1);
+            $(this).next("span").show();
+            $(this).next("span").flasher(1);
         });
         $("a").focusout(function() {
             $( ".flash" ).remove();
@@ -46,6 +50,9 @@
   </head>
   <body>
     <div class="wrapper">
+    <!--[if IE]>
+    <h1 style="color:#FFFFFF;">Sorry, I do not support Internet Explorer</h1>
+    <![endif]-->
       <header>
         <h1 id="name">Joseph Crosland</h1>
         <p class="view">
